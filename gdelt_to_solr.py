@@ -36,8 +36,8 @@ def describe_csv (filename):
         return list_rows
 
 result_list = describe_csv('20160214141801.19018.gkg.txt')
-print result_list[1] #this allows to choose which rows to see
-print result_list[1]['Themes'] #this displays just one field of a row
+print result_list[7] #this allows to choose which rows to see
+print result_list[7]['Themes'] #this displays just one field of a row
     
 #This function takes rows from a csv and ingest them to solr    #not very efficient because of 1 commit = 1 doc
 def csv_to_solr (filename):
