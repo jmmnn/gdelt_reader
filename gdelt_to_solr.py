@@ -27,7 +27,7 @@ def describe_csv (filename):
         for row in dictreader:
             #print(row['Date'] , row['Sources'])
             # print(row['NumArticles'] , row['CAMEOEvents'])
-            # print(row.keys())
+            print(row.keys())
             totalrows += 1
         print type(dictreader)
         print 'totalrows=' , totalrows
