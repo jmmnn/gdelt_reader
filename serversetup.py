@@ -29,7 +29,7 @@ SOLRPY = "sudo pip install -U solrpy"
 
 #order commands in sequence ## Uncomment these for 1st install
 cmds = [
-    GIT,
+    #GIT,
     PIP,
     #JAVA,
     #GETSOLR,
