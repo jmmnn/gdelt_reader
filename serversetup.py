@@ -11,7 +11,7 @@ import os
 #Server setup
 GIT = "sudo apt-get install git"
 PIP = "sudo apt-get install python-pip"
-JAVA = "sudo apt-get install openjdk-8-jre"
+JAVA = "sudo apt-get install openjdk-7-jre"
 
 #Solr install and start
 GETSOLR = "wget http://mirror.cc.columbia.edu/pub/software/apache/lucene/solr/5.4.0/solr-5.4.0.tgz"
