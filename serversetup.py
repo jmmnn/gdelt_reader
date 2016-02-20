@@ -9,6 +9,7 @@ import os
 #List commands to execute here.
 
 #Server setup
+UPDATE = "sudo apt-get update"
 GIT = "sudo apt-get install git"
 PIP = "sudo apt-get install python-pip"
 JAVA = "sudo apt-get install openjdk-7-jre"
@@ -29,6 +30,7 @@ SOLRPY = "sudo pip install -U solrpy"
 
 #order commands in sequence ## Uncomment these for 1st install
 cmds = [
+    UPDATE,
     #GIT,
     #PIP,
     JAVA,
