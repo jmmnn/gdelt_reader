@@ -14,11 +14,15 @@ GIT = "sudo apt-get install git"
 PIP = "sudo apt-get install python-pip"
 JAVA = "sudo apt-get install openjdk-7-jre"
 
-#Solr install and start
-GETSOLR = "wget http://mirror.cc.columbia.edu/pub/software/apache/lucene/solr/5.4.0/solr-5.4.0.tgz"
+#######  Solr install and start
+#Solr configurations
+collection = "gdelt"
+port = "8080"
+
+GETSOLR = "wget http://archive.apache.org/dist/lucene/solr/5.4.0//solr-5.4.0.tgz"
 UNPAKSOLR = "tar -xvf solr-5.4.0.tgz"
-STARTSOLR = "bin/solr start -p $PORT"
-CREATE_COLLECTION = "bin/solr create -c linksdgs"
+STARTSOLR = "bin/solr start -p " + port
+CREATE_COLLECTION = "bin/solr create -c " + collection
 
 
 #Python stuff
@@ -31,22 +35,22 @@ SOLRPY = "sudo pip install -U solrpy"
 #order commands in sequence ## Uncomment these for 1st install
 cmds = [
     #UPDATE,
-    GIT,
-    PIP,
-    JAVA,
-    #GETSOLR,
-    #UNPAKSOLR, 
+    #GIT,
+    #PIP,
+    #JAVA,
+    GETSOLR,
+    UNPAKSOLR 
     ]
 
 
 #more commands in sequence ## Comment Creata_collection after the first install
 cmds2 = [ 
-    #STARTSOLR,
-    #CREATE_COLLECTION
+    STARTSOLR,
+    CREATE_COLLECTION
     ]
 
-
-print os.getcwd()
+dir = os.getcwd()
+print dir
 
 #Iterates over list, running statements for each item in the list
 count=0
@@ -55,7 +59,9 @@ for cmd in cmds:
     print "Running Command Number %s" % count
     subprocess.call(cmd, shell=True)
     
-#os.chdir('/home/ubuntu/workspace/solr-5.4.0/')
+os.chdir(dir + '/solr-5.4.0/')
+dir = os.getcwd()
+print dir
 
 count2=0
 for cmd in cmds2:
