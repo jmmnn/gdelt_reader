@@ -13,10 +13,11 @@ UPDATE = "sudo apt-get update"
 GIT = "sudo apt-get install git"
 PIP = "sudo apt-get install python-pip"
 JAVA = "sudo apt-get install openjdk-7-jre"
+UNZIP = "sudo apt-get install unzip"
 
 #######  Solr install and start
 #Solr configurations
-collection = "gdelt"
+collection = "linksdgs"
 port = "8080"
 
 GETSOLR = "wget http://archive.apache.org/dist/lucene/solr/5.4.0//solr-5.4.0.tgz"
@@ -25,34 +26,40 @@ STARTSOLR = "bin/solr start -p " + port
 CREATE_COLLECTION = "bin/solr create -c " + collection
 
 
-#Python stuff
+#######  Python stuff
 NLTK = "sudo pip install -U nltk"
 SCIKIT_LEARN = "sudo pip install -U scikit-learn"
 PDFMINER = "sudo pip install -U pdfminer"
 PUNKT = "sudo python -m nltk.downloader punkt"
 SOLRPY = "sudo pip install -U solrpy"
 
-#order commands in sequence ## Uncomment these for 1st install
+#FIRST list of commands in sequence ## Uncomment these for 1st install
 cmds = [
     #UPDATE,
     #GIT,
     #PIP,
     #JAVA,
-    GETSOLR,
-    UNPAKSOLR 
+    #GETSOLR,
+    #UNPAKSOLR 
     ]
 
 
-#more commands in sequence ## Comment Creata_collection after the first install
+#SECOND list of commands in sequence ## Comment Creata_collection after the first install
 cmds2 = [ 
-    STARTSOLR,
-    CREATE_COLLECTION
+    #STARTSOLR,
+    #CREATE_COLLECTION
+    ]
+    
+    
+#THIRD list of commands in sequence ## Comment Creata_collection after the first install
+cmds3 = [ 
+    #SOLRPY
     ]
 
 dir = os.getcwd()
 print dir
 
-#Iterates over list, running statements for each item in the list
+###### Iterates over the FIRST list of commands
 count=0
 for cmd in cmds:
     count+=1
@@ -63,8 +70,16 @@ os.chdir(dir + '/solr-5.4.0/')
 dir = os.getcwd()
 print dir
 
+###### Iterates over the SECOND list of commands
 count2=0
 for cmd in cmds2:
     count2+=1
     print "Running Command Number %s" % count2
+    subprocess.call(cmd, shell=True)
+    
+###### Iterates over the THIRD list of commands
+count3=0
+for cmd in cmds3:
+    count3+=1
+    print "Running Command Number %s" % count3
     subprocess.call(cmd, shell=True)
