@@ -22,17 +22,22 @@ search_server = 'http://localhost:8080/solr/' + str(search_collection)
 def describe_csv (filename):
     with open(filename) as csvfile:
         dictreader = csv.DictReader(csvfile, delimiter='\t')
-        print(dictreader.next()) #gives the first row
+        #print(dictreader.next()) #gives the first row
         totalrows = 0
+        list_rows = []
         for row in dictreader:
             #print(row['Date'] , row['Sources'])
             # print(row['NumArticles'] , row['CAMEOEvents'])
-            # print(row.keys())
+            #print(row.keys())
+            list_rows.append(row)
             totalrows += 1
-        print type(dictreader)
-        print 'totalrows=' , totalrows
+        #print type(dictreader)
+        #print 'totalrows=' , totalrows
+        return list_rows
 
-describe_csv('20160214141801.19018.gkg.txt')
+result_list = describe_csv('20160214141801.19018.gkg.txt')
+print result_list[7] #this allows to choose which rows to see
+print result_list[7]['Themes'] #this displays just one field of a row
     
 #This function takes rows from a csv and ingest them to solr    #not very efficient because of 1 commit = 1 doc
 def csv_to_solr (filename):
